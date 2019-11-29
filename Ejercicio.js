@@ -1,4 +1,4 @@
-const vendedoras = ["Ada", "Grace", "Hedy", "Sheryl"];
+const vendedoras = ["Fio", "Vick", "Hermenegilda", "Julia"];
 
 const ventas = [
   [
@@ -6,7 +6,7 @@ const ventas = [
     4,
     2,
     2019,
-    "Grace",
+    "Vick",
     "Centro",
     ["Monitor GPRS 3000", "Motherboard ASUS 1500"]
   ],
@@ -15,7 +15,7 @@ const ventas = [
     1,
     1,
     2019,
-    "Ada",
+    "Hermenegilda",
     "Centro",
     ["Monitor GPRS 3000", "Motherboard ASUS 1500"]
   ],
@@ -24,7 +24,7 @@ const ventas = [
     2,
     1,
     2019,
-    "Grace",
+    "Fio",
     "Caballito",
     ["Monitor ASC 543", "Motherboard MZI", "HDD Toyiva"]
   ],
@@ -33,7 +33,7 @@ const ventas = [
     10,
     1,
     2019,
-    "Ada",
+    "Vick",
     "Centro",
     ["Monitor ASC 543", "Motherboard ASUS 1200"]
   ],
@@ -42,7 +42,7 @@ const ventas = [
     12,
     1,
     2019,
-    "Grace",
+    "Julia",
     "Caballito",
     ["Monitor GPRS 3000", "Motherboard ASUS 1200"]
   ],
@@ -51,7 +51,7 @@ const ventas = [
     21,
     3,
     2019,
-    "Hedy",
+    "Fio",
     "Caballito",
     ["Monitor ASC 543", "Motherboard ASUS 1200", "RAM Quinston"]
   ]
@@ -70,7 +70,6 @@ const precios = [
 ];
 
 const sucursales = ["Centro", "Caballito"];
-
 //precioMaquina(["Monitor GPRS 3000", "Motherboard ASUS 1500"]);
 //1
 
@@ -85,6 +84,7 @@ const precioMaquina = componentes => {
   }
   return valor;
 };
+
 /* 
 const _ = componentes => {
   return componentes.map(componente => {
@@ -108,16 +108,41 @@ const __ = componentes => {
 }
  */
 
-/* ventasSucursal(sucursal): recibe por parámetro el nombre de una sucursal y retorna el importe de las ventas totales realizadas por una sucursal sin límite de fecha.
- console.log( ventasSucursal("Centro") ); // 4195 */
- 
-const ventasSucursal = sucursal => {
-  let ventasTotales = 0;
-  const sucursalesFiltradas = ventas.filter(venta => venta[3] == sucursal);
-  const componentes = sucursalesFiltradas.map(venta => {
-    return venta[6];
+/* ventasVendedora(nombre): recibe por parámetro el nombre de una vendedora y retorna el importe total de ventas realizadas por dicha vendedora.
+console.log( ventasVendedora("Grace") ); // 990 */
+
+const ventasVendedora = nombre => {
+  const ventasDeVendedora = ventas.filter(venta => venta[4] == nombre);
+  const valorVentasVendedora = sucursalesVendedora.map(venta => {
+    return precioMaquina(venta[6]);
   });
-   return ventasTotales=precioMaquina(componentes);
+  return valorVentasVendedora.reduce((acc, numero) => acc + numero, 0);
+};
+
+/* ventasSucursal(sucursal): recibe por parámetro el nombre de una sucursal y retorna el importe de las ventas totales realizadas por una sucursal sin límite de fecha.
+ console.log( ventasSucursal("Centro"); */
+
+const ventasSucursal = sucursal => {
+  const sucursalesFiltradas = ventas.filter(venta => venta[5] == sucursal);
+  const valorVentas = sucursalesFiltradas.map(venta => {
+    return precioMaquina(venta[6]);
+  });
+  return valorVentas.reduce((acc, numero) => acc + numero, 0);
+};
+
+/*6 - mejorVendedora(): Devuelve el nombre de la vendedora que más ingresos generó */
+
+const mejorVendedora = () => {
+  let nombreVendedora;
+  let maxVentas = 0;
+  for (let vendedora of vendedoras) {
+    let cantidadVentas = ventasVendedora(vendedora);
+    if (maxVentas < cantidadVentas) {
+      maxVentas = cantidadVentas;
+      nombreVendedora = vendedora;
+    }
+  }
+  return nombreVendedora;
 };
 
 module.exports = {
@@ -125,5 +150,7 @@ module.exports = {
   vendedoras,
   precios,
   precioMaquina,
-  ventasSucursal
+  ventasVendedora,
+  ventasSucursal,
+  mejorVendedora
 };
