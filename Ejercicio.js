@@ -22,3 +22,65 @@ const precios = [
 ];
 
 const sucursales = ['Centro', 'Caballito'];
+
+
+
+const precioMaquina = componentes => {
+  let valor = 0;
+  for (let componente of componentes) {
+    precios.forEach(precio => {
+      if (precio[0] == componente) {
+        valor += precio[1];
+      }
+    });
+  }
+  return valor;
+};
+
+// ventaPromedio(): Debe retornar el importe promedio por venta, 
+// como un número entero sin decimales redondeado siempre para abajo.
+
+
+ventaPromedio = () => {
+  valor = 0;
+  let preciosComponentes = ventas.map(venta => {
+    return precioMaquina(venta[6]);
+  })
+  let total = preciosComponentes.reduce((acumulador, venta) =>{
+    return acumulador + venta
+  });
+  let resultado = total/ventas.length;
+    return Math.floor(resultado)
+}
+
+//obtenerIdVenta(): Tiene que retornar un número aleatorio
+//entre 100000000 y 999999999
+
+obtenerIdVenta = () => {
+  let min = 100000000;
+  let max = 999999999;
+  let venta = Math.round(Math.random() * (max +1) - min) + min;
+  return venta;
+}
+
+//agregarVenta(dia, mes, anio, vendedora, sucursal, componentes): 
+//recibe por parámetro todos los datos de una venta, 
+//y los agrega en el array de ventas. 
+//Al igual que las ventas que ya están previamente creadas, 
+//además de estos datos necesitamos agregar el primer dato 
+//que es un identificador de la venta. Para agregar este dato, 
+//tenemos que usar la función desarrollada en el punto 
+//anterior obtenerIdVenta
+
+agregarVenta = (dia, mes, año, nombreVendedora, sucursal, componente) => {
+  let id = obtenerIdVenta()
+  return ventas.push([id, dia, mes, año, nombreVendedora, sucursal, componente]);
+}
+
+
+module.exports = {
+  vendedoras,
+  ventas,
+  precios, 
+  sucursales
+}
