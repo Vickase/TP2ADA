@@ -82,5 +82,8 @@ module.exports = {
   vendedoras,
   ventas,
   precios, 
-  sucursales
+  sucursales,
+  ventaPromedio,
+  obtenerIdVenta,
+  agregarVenta
 }
