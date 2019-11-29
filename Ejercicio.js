@@ -93,8 +93,12 @@ agregarVenta = (dia, mes, año, nombreVendedora, sucursal, componente) => {
 
 module.exports = {
   ventas,
-  vendedoras,
   precios,
+  vendedoras,
+  sucursales,
+  ventaPromedio,
+  obtenerIdVenta,
+  agregarVenta,
   precioMaquina,
   ventasVendedora,
   ventasSucursal,
