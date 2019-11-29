@@ -40,7 +40,7 @@ console.log( ventasVendedora("Grace") ); // 990 */
 
 const ventasVendedora = nombre => {
   const ventasDeVendedora = ventas.filter(venta => venta[4] == nombre);
-  const valorVentasVendedora = sucursalesVendedora.map(venta => {
+  const valorVentasVendedora = ventasDeVendedora.map(venta => {
     return precioMaquina(venta[6]);
   });
   return valorVentasVendedora.reduce((acc, numero) => acc + numero, 0);
