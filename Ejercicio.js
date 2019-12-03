@@ -25,12 +25,10 @@ const sucursales = ['Centro', 'Caballito'];
 
 // ej 2
 
-/**
+/*
+ej 2:
 cantidadVentasComponente(componente): recibe el nombre de un componente y 
 devuelve la cantidad de veces que fue vendido. 
-La lista de ventas no se pasa por parámetro, 
-se asume que está identificada por la variable ventas.
-
 console.log( cantidadVentasComponente("Monitor ASC 543") ); // 3
  */
 
@@ -43,14 +41,12 @@ const cantidadVentasComponente = componente  => {
  }
 
 
- //* ej 4 
+ 
 
- /**
-  * 
-  * 
+ /*
+ej 4:
 componenteMasVendido(): Devuelve el nombre del componente que más ventas tuvo históricamente.
- El dato de la cantidad de ventas es el que indica la función cantidadVentasComponente
-
+El dato de la cantidad de ventas es el que indica la función cantidadVentasComponente
 console.log( componenteMasVendido() ); // Monitor GPRS 3000
 */
 
@@ -69,13 +65,7 @@ const componenteMasVendido = () => {
    
 
 module.exports = {
-  ventas,
-  precios,
-  vendedoras,
-  sucursales,
   cantidadVentasComponente,
   componenteMasVendido,
-
-
 }
 
