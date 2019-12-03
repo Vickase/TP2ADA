@@ -2,6 +2,7 @@
   "name": "tp2ada",
   "version": "1.0.0",
   "description": "",
+
   "main": "Ejercicio.js",
   "scripts": {
     "test": "jest"
@@ -15,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/Vickase/TP2ADA/issues"
   },
+
   "homepage": "https://github.com/Vickase/TP2ADA#readme"
+
+  "homepage": "https://github.com/Vickase/TP2ADA#readme",
+  "description": ""
+
 }
