@@ -23,14 +23,24 @@ const precios = [
 
 const sucursales = ['Centro', 'Caballito'];
 
-
-// ej 2
+/* precioMaquina(componentes): recibe un array de componentes y devuelve el precio de la máquina que se puede armar con esos componentes, que es la suma de los precios de cada componente incluido.*/
+  
+const precioMaquina = componentes => {
+  let valor = 0;
+  for (let componente of componentes) {
+    precios.forEach(precio => {
+      if (precio[0] == componente) {
+        valor += precio[1];
+      }
+    });
+  }
+  return valor;
+};
 
 /*
 ej 2:
 cantidadVentasComponente(componente): recibe el nombre de un componente y 
 devuelve la cantidad de veces que fue vendido. 
-console.log( cantidadVentasComponente("Monitor ASC 543") ); // 3
  */
 
 const cantidadVentasComponente = componente  => {
@@ -41,12 +51,18 @@ const cantidadVentasComponente = componente  => {
   return cantidad.length;
  }
 
+/* ventasVendedora(nombre): recibe por parámetro el nombre de una vendedora y retorna el importe total de ventas realizadas por dicha vendedora.
+console.log( ventasVendedora("Grace") ); // 990 */
 
- 
+const ventasVendedora = nombre => {
+  const ventasDeVendedora = ventas.filter(venta => venta[4] == nombre);
+  const valorVentasVendedora = ventasDeVendedora.map(venta => {
+    return precioMaquina(venta[6]);
+  });
+  return valorVentasVendedora.reduce((acc, numero) => acc + numero, 0);
+};
 
- /*
-ej 4:
-componenteMasVendido(): Devuelve el nombre del componente que más ventas tuvo históricamente.
+ /* componenteMasVendido(): Devuelve el nombre del componente que más ventas tuvo históricamente.
 El dato de la cantidad de ventas es el que indica la función cantidadVentasComponente
 console.log( componenteMasVendido() ); // Monitor GPRS 3000
 */
@@ -62,29 +78,6 @@ const componenteMasVendido = () => {
     }
   }
   return componenteMasVendido;
-};
-   
-const precioMaquina = componentes => {
-  let valor = 0;
-  for (let componente of componentes) {
-    precios.forEach(precio => {
-      if (precio[0] == componente) {
-        valor += precio[1];
-      }
-    });
-  }
-  return valor;
-};
-
-/* ventasVendedora(nombre): recibe por parámetro el nombre de una vendedora y retorna el importe total de ventas realizadas por dicha vendedora.
-console.log( ventasVendedora("Grace") ); // 990 */
-
-const ventasVendedora = nombre => {
-  const ventasDeVendedora = ventas.filter(venta => venta[4] == nombre);
-  const valorVentasVendedora = ventasDeVendedora.map(venta => {
-    return precioMaquina(venta[6]);
-  });
-  return valorVentasVendedora.reduce((acc, numero) => acc + numero, 0);
 };
 
 /* ventasSucursal(sucursal): recibe por parámetro el nombre de una sucursal y retorna el importe de las ventas totales realizadas por una sucursal sin límite de fecha.
