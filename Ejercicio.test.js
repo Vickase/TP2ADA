@@ -1,3 +1,5 @@
+const cantidadVentasComponente = require("./Ejercicio").cantidadVentasComponente;
+const componenteMasVendido = require("./Ejercicio").componenteMasVendido;
 const ventas = require("./Ejercicio").ventas;
 const vendedoras = require("./Ejercicio").vendedoras;
 const precios = require("./Ejercicio").precios;
@@ -15,11 +17,20 @@ test("Recibe un array de componentes y devuelve la suma de los precios", () => {
   const resultado = precioMaquina(componentes);
   expect(resultado).toBe(320);
 });
+
+test (' devuelve la cantidad de venta por componente', () => {
+    expect(cantidadVentasComponente('Motherboard ASUS 1500')).toBe(2)
+  });
+
 test("Recibe un nombre de una vendedora y devuelve el total de ventas de esta", () => {
   const nombre = "Fio";
   const resultado3 = ventasVendedora(nombre);
   expect(resultado3).toBe(830);
 });
+
+test(' devuelve el componente más vendido', () => {
+    expect(componenteMasVendido()).toBe('Monitor GPRS 3000')
+  });
 
 test("Recibe una sucursal y devuelve el total de ventas de esta", () => {
   const sucursal = "Centro";
@@ -60,3 +71,4 @@ test("agrega una nueva venta al array de ventas", () => {
   ]);
   expect(ventas.length).toBe(7);
 });
+
