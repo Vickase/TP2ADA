@@ -22,3 +22,60 @@ const precios = [
 ];
 
 const sucursales = ['Centro', 'Caballito'];
+
+// ej 2
+
+/**
+cantidadVentasComponente(componente): recibe el nombre de un componente y 
+devuelve la cantidad de veces que fue vendido. 
+La lista de ventas no se pasa por parámetro, 
+se asume que está identificada por la variable ventas.
+
+console.log( cantidadVentasComponente("Monitor ASC 543") ); // 3
+ */
+
+const cantidadVentasComponente = componente  => {
+  let cantidad = ventas.filter(venta => {
+    let componentesDeVenta = venta[6];
+    return componentesDeVenta.indexOf(componente) > -1;
+  });
+  return cantidad.length;
+ }
+
+
+ //* ej 4 
+
+ /**
+  * 
+  * 
+componenteMasVendido(): Devuelve el nombre del componente que más ventas tuvo históricamente.
+ El dato de la cantidad de ventas es el que indica la función cantidadVentasComponente
+
+console.log( componenteMasVendido() ); // Monitor GPRS 3000
+*/
+
+const componenteMasVendido = () => {
+  let componenteMasVendido;
+  let cantidadMax = 0;
+  for (let precio of precios){
+    const ventaComponente = cantidadVentasComponente(precio[0]);
+    if (cantidadMax < ventaComponente){
+      componenteMasVendido = precio[0];
+      cantidadMax = ventaComponente;
+    }
+  }
+  return componenteMasVendido;
+};
+   
+
+module.exports = {
+  ventas,
+  precios,
+  vendedoras,
+  sucursales,
+  cantidadVentasComponente,
+  componenteMasVendido,
+
+
+}
+

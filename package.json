@@ -1,0 +1,19 @@
+{
+  "name": "tp2ada",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Ejercicio.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vickase/TP2ADA.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vickase/TP2ADA/issues"
+  },
+  "homepage": "https://github.com/Vickase/TP2ADA#readme"
+}
