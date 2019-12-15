@@ -54,7 +54,8 @@ test("devuelve un importe promedio por venta", () => {
 test("devuelve un número random entre 100000000 y 999999999", () => {
   let venta =
     Math.round(Math.random() * (999999999 + 1) - 100000000) + 100000000;
-  expect(obtenerIdVenta(venta)).toBeGreaterThan(99999999);
+  expect(obtenerIdVenta(venta)).toBeGreaterThan(99999999); // Este test devuelve error porque 
+  // venta deberia ser = Math.round(Math.random() * (100000000 - 999999999) + 100000000);
   expect(obtenerIdVenta(venta)).toBeLessThan(1000000000);
 });
 
