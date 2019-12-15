@@ -1,3 +1,5 @@
+// Esta mal mergeado el package.json
+// Fijense que hay keys repetidas (description y homepage)
 const vendedoras = ["Fio", "Vick", "Hermenegilda", "Julia"];
 
 const ventas = [
